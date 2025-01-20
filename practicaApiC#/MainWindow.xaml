@@ -13,9 +13,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="previousImageButton" Padding="15" Margin="15" >Prev</Button>
-            <Button x:Name="sunInformationButton" Padding="15" Margin="15">Sun Info</Button>
-            <Button x:Name="nextImageButton" Padding="15" Margin="15">Next</Button>
+            <Button x:Name="previousImageButton" Padding="15" Margin="15" Click="previousImageButton_Click" >Prev</Button>
+            <Button x:Name="sunInformationButton" Click="sunInformationButton_Click" Padding="15" Margin="15">Sun Info</Button>
+            <Button x:Name="nextImageButton" Padding="15" Margin="15" Click="nextImageButton_Click" >Next</Button>
         </StackPanel>
 
         <Image Grid.Row="1" x:Name="comicImage"></Image>

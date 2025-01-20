@@ -1,7 +1,6 @@
 ﻿using DemoLibrary;
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -10,28 +9,19 @@ using System.Threading.Tasks;
 
 namespace practicaApiC_
 {
-    public class ComicProcessor
+    public class SunProcessor
     {
-        
-        public static async Task<ComicModel> LoadComic(int comicNumber = 0)
+        public static async Task<SunModel> LoadSunInformation()
         {
-            string url = "";
+            string url = "https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&date=today";
 
-            if(comicNumber > 0)
-            {
-                url = $"https://xkcd.com/{ comicNumber }/info.0.json";
-            }
-            else
-            {
-                url = $"https://xkcd.com/info.0.json";
-            }
             using (HttpResponseMessage reponse = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (reponse.IsSuccessStatusCode)
                 {
-                    ComicModel? comic = await reponse.Content.ReadFromJsonAsync<ComicModel>();
+                    SunResultModel? result = await reponse.Content.ReadFromJsonAsync<SunResultModel>();
 
-                    return comic;
+                    return result.Results;
                 }
                 else
                 {
